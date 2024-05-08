@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central</title>
+    <link rel="shortcut icon" href="../Img/logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="../style/cadastrar.css" />
+
+</head>
+<body>
+    <form id="cadastroForm">
+        <h1>Cadastro de Desabrigados</h1>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="idade">Idade:</label>
+        <input type="number" id="idade" name="idade" required>
+        
+        <label for="cidade">Cidade:</label>
+        <input type="text" id="cidade" name="cidade" required>
+        
+        <label for="abrigo">Nome do abrigo:</label>
+        <input type="text" id="abrigo" name="abrigo" required>
+        
+        <label for="bairro">Bairro:</label>
+        <input type="text" id="bairro" name="bairro" required>
+        
+        <label for="sexo">Sexo:</label>
+        <select id="sexo" name="sexo" required>
+            <option value="">Selecione</option>
+            <option value="masculino">Masculino</option>
+            <option value="feminino">Feminino</option>
+        </select>
+        
+        <div class="button-group">
+            <input type="submit" value="Cadastrar">
+            <input type="button" class="buscar" value="Buscar" onclick="buscarDesabrigado()">
+            <!-- Atualizado para chamar a função `alterarDesabrigado` -->
+            <input type="button" class="alterar" value="Alterar Dados" onclick="alterarDesabrigado()">
+        </div>
+    </form>
+
+    <!-- Adicionar o script como módulo -->
+    <script type="module" src="../scripts/cadastrar.js"></script>
+</body>
+</html>
