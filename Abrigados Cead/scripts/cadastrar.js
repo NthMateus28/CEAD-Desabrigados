@@ -40,6 +40,7 @@ function cadastrarDesabrigado(event) {
     const abrigo = document.getElementById("abrigo").value;
     const bairro = document.getElementById("bairro").value;
     const sexo = document.getElementById("sexo").value;
+    const estado = document.getElementById("estado").value; // Novo campo de entrada/saída
 
     // Criar uma chave única para o novo desabrigado
     const novoDesabrigadoRef = ref(database, 'desabrigados/' + Date.now());
@@ -51,7 +52,8 @@ function cadastrarDesabrigado(event) {
         cidade,
         abrigo,
         bairro,
-        sexo
+        sexo,
+        estado
     };
 
     // Enviar dados para o Realtime Database
@@ -86,6 +88,7 @@ function buscarDesabrigado() {
                 document.getElementById("abrigo").value = dados.abrigo || "";
                 document.getElementById("bairro").value = dados.bairro || "";
                 document.getElementById("sexo").value = dados.sexo || "";
+                document.getElementById("estado").value = dados.estado || ""; // Preenche o novo campo de entrada/saída
             });
         } else {
             alert("Desabrigado não encontrado.");
@@ -110,6 +113,7 @@ function alterarDesabrigado() {
     const abrigo = document.getElementById("abrigo").value;
     const bairro = document.getElementById("bairro").value;
     const sexo = document.getElementById("sexo").value;
+    const estado = document.getElementById("estado").value; // Novo campo de entrada/saída
 
     // Dados atualizados
     const dadosAtualizados = {
@@ -118,7 +122,8 @@ function alterarDesabrigado() {
         cidade,
         abrigo,
         bairro,
-        sexo
+        sexo,
+        estado
     };
 
     // Atualizar o registro existente usando a chave armazenada
