@@ -33,10 +33,17 @@
             <option value="feminino">Feminino</option>
         </select>
         
+        <!-- Novo campo de entrada/saída -->
+        <label for="estado">Estado:</label>
+        <select id="estado" name="estado" required>
+            <option value="">Selecione</option>
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+        </select>
+        
         <div class="button-group">
             <input type="submit" value="Cadastrar">
             <input type="button" class="buscar" value="Buscar" onclick="buscarDesabrigado()">
-            <!-- Atualizado para chamar a função `alterarDesabrigado` -->
             <input type="button" class="alterar" value="Alterar Dados" onclick="alterarDesabrigado()">
         </div>
     </form>
