@@ -1,3 +1,29 @@
+// Função para aplicar máscara de telefone
+function aplicarMascaraTelefone(campo) {
+    let telefone = campo.value;
+
+    // Remove caracteres que não são números
+    telefone = telefone.replace(/\D/g, "");
+
+    // Limita a quantidade de dígitos ao máximo permitido para telefones no Brasil
+    telefone = telefone.substring(0, 11); // Garante no máximo 11 dígitos
+
+    // Aplica a máscara (00) 00000-0000 para 11 dígitos ou (00) 0000-0000 para 10 dígitos
+    if (telefone.length > 10) {
+        telefone = telefone.replace(/^(\d{2})(\d{1,5})(\d{4})/, "($1) $2-$3");
+    } else {
+        telefone = telefone.replace(/^(\d{2})(\d{1,4})(\d{4})/, "($1) $2-$3");
+    }
+
+    // Atualiza o valor do campo com a máscara
+    campo.value = telefone;
+}
+
+// Associar a função ao evento `input` do campo telefone
+document.getElementById("telefone").addEventListener("input", function() {
+    aplicarMascaraTelefone(this);
+});
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import {
     getDatabase,
@@ -35,6 +61,7 @@ function cadastrarDesabrigado(event) {
 
     // Obter dados do formulário
     const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
     const idade = document.getElementById("idade").value;
     const cidade = document.getElementById("cidade").value;
     const abrigo = document.getElementById("abrigo").value;
@@ -48,6 +75,7 @@ function cadastrarDesabrigado(event) {
     // Configuração dos dados a serem enviados
     const dadosDesabrigado = {
         nome,
+        telefone,
         idade,
         cidade,
         abrigo,
@@ -83,6 +111,7 @@ function buscarDesabrigado() {
                 chaveDesabrigadoEncontrado = childSnapshot.key; // Armazena a chave para alterações futuras
 
                 // Preencher os campos do formulário
+                document.getElementById("telefone").value = dados.telefone || "";
                 document.getElementById("idade").value = dados.idade || "";
                 document.getElementById("cidade").value = dados.cidade || "";
                 document.getElementById("abrigo").value = dados.abrigo || "";
@@ -108,6 +137,7 @@ function alterarDesabrigado() {
 
     // Obter os dados atualizados do formulário
     const nome = document.getElementById("nome").value;
+    const telefone = document.getElementById("telefone").value;
     const idade = document.getElementById("idade").value;
     const cidade = document.getElementById("cidade").value;
     const abrigo = document.getElementById("abrigo").value;
@@ -118,6 +148,7 @@ function alterarDesabrigado() {
     // Dados atualizados
     const dadosAtualizados = {
         nome,
+        telefone,
         idade,
         cidade,
         abrigo,
